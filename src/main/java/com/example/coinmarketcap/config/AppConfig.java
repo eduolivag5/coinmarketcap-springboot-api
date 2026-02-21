@@ -40,9 +40,11 @@ public class AppConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("*") // O pon tu URL de frontend de Render
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+                registry.addMapping("/**") // Se aplica a todos los endpoints
+                        .allowedOrigins("*") // Permite cualquier origen
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Permite todos los métodos
+                        .allowedHeaders("*") // Permite todos los encabezados
+                        .exposedHeaders("Authorization"); // Opcional: por si luego usas tokens
             }
         };
     }
